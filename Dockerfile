@@ -12,8 +12,7 @@ ENV PATH="${POETRY_VENV}/bin:${PATH}"
 
 WORKDIR /app
 COPY pyproject.toml poetry.lock* ./
-RUN --mount=type=cache,target=/opt/.cache \
-    poetry install --no-interaction --no-root --without dev
+RUN poetry install --no-interaction --no-root --without dev
 
 FROM python:3.12-slim AS runtime
 
